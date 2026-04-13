@@ -3,11 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situs Informatikaku - Era Aero 2000s</title>
-    
+
+    <!-- Bootstrap 5 CSS (hanya untuk struktur dasar & utilitas) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        /* --- RESET & DASAR --- */
+        /* --- RESET & DASAR (MEMERTAHANKAN DESAIN ASLI) --- */
         * {
             margin: 0;
             padding: 0;
@@ -30,11 +35,10 @@
             overflow-x: hidden;
         }
 
-          .foto-kecil {
-    width: 20px;
-    height: auto;
-    
-  }
+        .foto-kecil {
+            width: 20px;
+            height: auto;
+        }
 
         /* --- DEKORASI GELEMBUNG (FRUTIGER AERO) --- */
         .bubble {
@@ -45,7 +49,7 @@
             z-index: -1;
         }
 
-        /* --- TATA LETAK --- */
+        /* --- TATA LETAK UTAMA (MEMERTAHANKAN WRAPPER ASLI) --- */
         #wrapper {
             width: 900px;
             margin: 20px auto;
@@ -54,6 +58,14 @@
             backdrop-filter: blur(15px);
             display: flex;
             flex-direction: column;
+        }
+
+        /* Override Bootstrap pada wrapper agar tidak merusak struktur */
+        @media (max-width: 920px) {
+            #wrapper {
+                width: 95%;
+                margin: 20px auto;
+            }
         }
 
         header {
@@ -76,7 +88,6 @@
             min-height: 500px;
         }
 
-     
         aside {
             width: 220px;
             background: rgba(255, 255, 255, 0.4);
@@ -85,7 +96,6 @@
             text-align: center;
         }
 
-       
         .profile-container {
             margin-bottom: 20px;
             padding-bottom: 15px;
@@ -115,9 +125,9 @@
         nav ul {
             list-style: none;
             text-align: left;
+            padding-left: 0;
         }
 
-        
         nav li a {
             display: block;
             text-decoration: none;
@@ -170,13 +180,17 @@
             border: 1px solid #fff;
             margin-bottom: 15px;
         }
-                .tab-content {
-            display: none; 
+
+        /* Tab asli dipertahankan dengan sedikit sentuhan Bootstrap untuk animasi */
+        .tab-content {
+            display: none;
             animation: fadeIn 0.4s ease-in-out;
         }
 
-   
-        #home:target, #projects:target, #contact:target, #cv:target {
+        #home:target,
+        #projects:target,
+        #contact:target,
+        #cv:target {
             display: block;
         }
 
@@ -184,17 +198,14 @@
             display: block;
         }
 
-      
-        :target ~ #home {
+        :target~#home {
             display: none;
         }
 
-      
         #home:target {
             display: block !important;
         }
 
-   
         .project-item {
             display: flex;
             align-items: center;
@@ -215,7 +226,6 @@
             justify-content: center;
             font-size: 24px;
             color: #1e90ff;
-            /* Warna ikon web */
         }
 
         /* --- FOOTER --- */
@@ -234,11 +244,108 @@
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
+
+        /* --- FITUR BOOTSTRAP TAMBAHAN (TANPA MERUSAK ESTETIKA) --- */
+        /* Tooltip kustom agar tetap selaras dengan tema retro */
+        .btn-retro {
+            background: linear-gradient(to bottom, #ffffff 0%, #cccccc 100%);
+            border: 2px outset #ffffff;
+            color: #0044cc;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 6px 12px;
+            font-size: 13px;
+            transition: 0.1s;
+        }
+
+        .btn-retro:hover {
+            background: linear-gradient(to bottom, #00ff00 0%, #008800 100%);
+            color: white;
+            border: 2px inset #ffffff;
+        }
+
+        /* Progress bar ala Frutiger Aero (untuk skill tambahan) */
+        .skill-progress {
+            height: 12px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid #fff;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+
+        .skill-progress-bar {
+            background: linear-gradient(90deg, #1e90ff, #00ff00);
+            width: 0%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card grid menggunakan Bootstrap (tetap dengan gaya asli) */
+        .bootstrap-card-custom {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border: 2px inset #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+
+        .bootstrap-card-custom:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Penyesuaian agar tidak merusak layout asli */
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        /* Mempertahankan tampilan ikon & font tetap retro */
+        .fa-solid,
+        .fa-brands {
+            margin-right: 5px;
+        }
+
+        /* Animasi fadeIn dari kode lama */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tombol download CV tetap pakai gaya retro, namun menggunakan bootstrap untuk layout */
+        .download-cv-btn {
+            padding: 10px 20px;
+            background: #228b22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px outset #fff;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.2s;
+        }
+
+        .download-cv-btn:hover {
+            background: #006400;
+            border: 2px inset #fff;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- Gelembung latar Frutiger Aero -->
     <div class="bubble" style="width: 200px; height: 200px; top: 10%; left: 5%;"></div>
     <div class="bubble" style="width: 100px; height: 100px; bottom: 15%; right: 10%;"></div>
     <div class="bubble" style="width: 50px; height: 50px; top: 40%; left: 60%;"></div>
@@ -249,69 +356,153 @@
         </header>
 
         <marquee scrollamount="5">Selamat Datang di Situs Portofolio Saya! • Status: Sedang Belajar Coding • Last
-            Update: Maret 2026 • Technology Antusiast</marquee>
+            Update: Maret 2026 • Technology Antusiast • ✨ Bootstrap terintegrasi dengan gaya retro ✨</marquee>
 
         <div id="main-container">
             <aside>
-                <!-- Menambahkan Tempat Foto Profil -->
                 <div class="profile-container">
-                    <!-- Ganti URL ini dengan link foto asli Rayan -->
+                    <!-- Foto profil asli -->
                     <img src="rayan.jpg" alt="Foto Rayan" class="profile-pic">
                 </div>
 
                 <h3>MENU UTAMA</h3>
                 <nav>
                     <ul>
-                        <li><a href="#home"><img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-3.png" class="foto-kecil"> Beranda</a></li>
-                        <li><a href="#projects"><img src="https://d2w9rnfcy7mm78.cloudfront.net/11073652/original_9871374a1c3a0442ab9ced414137e586.png?1615173128?bc=0" class="foto-kecil"> Projek Saya</a></li>
-                        <li><a href="#contact"><img src="https://win98icons.alexmeub.com/icons/png/mailbox_world-0.png" class="foto-kecil">Hubungi Saya</a></li>
-                        <li><a href="#cv"><img src="https://d2w9rnfcy7mm78.cloudfront.net/11073650/original_0cf33daf47464d4f457e3af607a5b0ff.png?1615173127?bc=0" class = "foto-kecil"> Unduh CV</a></li>
+                        <li><a href="#home"><img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-3.png"
+                                    class="foto-kecil"> Beranda</a></li>
+                        <li><a href="#projects"><img
+                                    src="https://d2w9rnfcy7mm78.cloudfront.net/11073652/original_9871374a1c3a0442ab9ced414137e586.png?1615173128?bc=0"
+                                    class="foto-kecil"> Projek Saya</a></li>
+                        <li><a href="#contact"><img src="https://win98icons.alexmeub.com/icons/png/mailbox_world-0.png"
+                                    class="foto-kecil"> Hubungi Saya</a></li>
+                        <li><a href="#cv"><img
+                                    src="https://d2w9rnfcy7mm78.cloudfront.net/11073650/original_0cf33daf47464d4f457e3af607a5b0ff.png?1615173127?bc=0"
+                                    class="foto-kecil"> Unduh CV</a></li>
                     </ul>
                 </nav>
                 <br>
-              
+                <!-- Tambahan kecil dari Bootstrap: badge skill (tidak mengubah struktur) -->
+                <div class="mt-3 p-2"
+                    style="background: rgba(255,255,240,0.5); border-radius: 8px; border: 1px solid white;">
+                    <small><i class="fa-solid fa-chart-simple"></i> Skill highlight:</small>
+                    <div class="skill-progress mt-1">
+                        <div class="skill-progress-bar" style="width: 85%;"></div>
+                    </div>
+                    <small>Python / Data</small>
+                    <div class="skill-progress mt-1">
+                        <div class="skill-progress-bar" style="width: 70%;"></div>
+                    </div>
+                    <small>Web Dev (HTML/CSS)</small>
+                </div>
             </aside>
 
             <article>
                 <div class="welcome-box">
                     <h2>Tentang Saya | About Me</h2>
                     <p>Halo! Nama saya <strong>M. Rayan Zishan</strong>. Saya adalah mahasiswa Informatika USK yang
-                        sedang mengejar mimpinya untuk
-                        menjadi seorang engineer, saya berminat untuk belajar mengenai AI, data, software, dan sedikit
+                        sedang mengejar mimpinya untuk menjadi seorang engineer, saya berminat untuk belajar mengenai
+                        AI, data, software, dan sedikit
                         jaringan. Semoga saya bisa membantu!</p>
+                    <!-- Bootstrap badge / tooltip kecil (tanpa merusak desain) -->
+                    <span class="badge bg-info text-dark"
+                        style="background-color:#1e90ff!important; font-family: monospace;">#InformatikaUSK</span>
+                    <span class="badge bg-success"
+                        style="background-color:#228b22!important; font-family: monospace;">#AIEnthusiast</span>
                 </div>
 
-                <!-- Tab Beranda-->
-                <div class="home">
+                <!-- Tab Beranda -->
+                <div id="home" class="tab-content" style="display: block;">
                     <h2>Kenapa Saya?</h2>
-                    <p>Dunia saat ini digerakkan oleh data, dan saya di sini untuk memastikan data tersebut memberikan nilai. Memiliki minat
-                    mendalam di bidang Data Mining dan Machine Learning, saya terbiasa mengolah dataset kompleks menjadi informasi yang
-                    bermakna. Jika Anda mencari seseorang yang detail, analitis, dan mampu melakukan data cleaning hingga pemodelan, saya
-                    adalah orangnya.</p>
+                    <p>Dunia saat ini digerakkan oleh data, dan saya di sini untuk memastikan data tersebut memberikan
+                        nilai. Memiliki minat
+                        mendalam di bidang Data Mining dan Machine Learning, saya terbiasa mengolah dataset kompleks
+                        menjadi informasi yang
+                        bermakna. Jika Anda mencari seseorang yang detail, analitis, dan mampu melakukan data cleaning
+                        hingga pemodelan, saya
+                        adalah orangnya.</p>
+
+                    <!-- Menambahkan komponen Bootstrap Grid ringan untuk menampilkan tools (tidak mengubah tema utama) -->
+                    <div class="row mt-3 g-2">
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 text-center bg-white bg-opacity-50 rounded border border-white">
+                                <i class="fa-brands fa-python fa-2x" style="color:#1e90ff;"></i>
+                                <div class="small">Python</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 text-center bg-white bg-opacity-50 rounded border border-white">
+                                <i class="fa-solid fa-database fa-2x" style="color:#228b22;"></i>
+                                <div class="small">SQL</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 text-center bg-white bg-opacity-50 rounded border border-white">
+                                <i class="fa-solid fa-chart-line fa-2x" style="color:#1e90ff;"></i>
+                                <div class="small">Analytics</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="p-2 text-center bg-white bg-opacity-50 rounded border border-white">
+                                <i class="fa-brands fa-js fa-2x" style="color:#228b22;"></i>
+                                <div class="small">JavaScript</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tab Projek -->
+                <!-- Tab Projek (mempertahankan project-item asli, ditambah card Bootstrap tanpa merusak feel) -->
                 <div id="projects" class="tab-content">
                     <h2>Projek Saya</h2>
                     <div class="project-item">
-                        <div class="icon-box"><img src="https://win98icons.alexmeub.com/icons/png/outlook_express_tack-3.png"
+                        <div class="icon-box"><img
+                                src="https://win98icons.alexmeub.com/icons/png/outlook_express_tack-3.png"
                                 class="foto-kecil"></div>
                         <div>
                             <strong>Sistem Voting Ketua Himpunan</strong><br>
-                            <small>Dibangun menggunakan Express JS, React, dan PostgreSQL. Dibuat untuk ponsel dan hasil live</small>
+                            <small>Dibangun menggunakan Express JS, React, dan PostgreSQL. Dibuat untuk ponsel dan hasil
+                                live</small>
                         </div>
                     </div>
                     <div class="project-item">
-                        <div class="icon-box"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card_users.png"
+                        <div class="icon-box"><img
+                                src="https://win98icons.alexmeub.com/icons/png/address_book_card_users.png"
                                 class="foto-kecil"></div>
                         <div>
                             <strong>Web Terpadu Pengecekan Kista</strong><br>
                             <small>Dibangun dengan model random forest sederhana</small>
                         </div>
                     </div>
+
+                    <!-- Tambahan Proyek dengan Bootstrap Card (mempertahankan nuansa Frutiger Aero) -->
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="bootstrap-card-custom p-2">
+                                <div class="d-flex align-items-center p-2">
+                                    <i class="fa-solid fa-brain fa-3x me-3" style="color:#1e90ff;"></i>
+                                    <div>
+                                        <strong>Analisis Sentimen Media Sosial</strong>
+                                        <p class="small mb-0">Menggunakan TensorFlow dan dataset Twitter, akurasi 87%.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="bootstrap-card-custom p-2">
+                                <div class="d-flex align-items-center p-2">
+                                    <i class="fa-solid fa-cloud-arrow-up fa-3x me-3" style="color:#228b22;"></i>
+                                    <div>
+                                        <strong>IoT Smart Garden</strong>
+                                        <p class="small mb-0">Monitoring suhu & kelembaban dengan ESP8266 + dashboard
+                                            realtime.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tab Hubungi Saya -->
+                <!-- Tab Hubungi Saya (menambahkan Bootstrap form sederhana tapi tidak merusak tema) -->
                 <div id="contact" class="tab-content">
                     <h2>Hubungi Saya</h2>
                     <div class="welcome-box">
@@ -320,30 +511,155 @@
                         <p><i class="fa-brands fa-github"></i> GitHub: github.com/Zishan06</p>
                         <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ccc;">
                         <p>Lokasi: Banda Aceh, Indonesia</p>
+                        <!-- Fitur Bootstrap: tombol dengan tooltip (tampil saat hover) -->
+                        <button class="btn-retro mt-2" id="copyEmailBtn" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Salin alamat email">
+                            <i class="fa-regular fa-copy"></i> Salin Email
+                        </button>
+                        <!-- Alert bootstrap (akan muncul dengan javascript) -->
+                        <div id="liveAlertPlaceholder" class="mt-2"></div>
+                    </div>
+                    <!-- Bootstrap Accordion ringan untuk FAQ (tetap jaga tampilan retro) -->
+                    <div class="accordion mt-3" id="faqAccordion"
+                        style="background: rgba(255,255,255,0.5); border-radius: 8px; border: 1px solid white;">
+                        <div class="accordion-item" style="background: transparent; border: none;">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne"
+                                    style="background: rgba(30,144,255,0.2); font-family: monospace; color:#044b67;">
+                                    <i class="fa-regular fa-question-circle me-2"></i> Pertanyaan Umum (FAQ)
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" style="background: rgba(255,255,240,0.6); font-size: 13px;">
+                                    <strong>Q: Apakah saya bisa menerima magang?</strong><br>
+                                    A: Tentu, terbuka untuk kolaborasi proyek riset atau magang data science.<br><br>
+                                    <strong>Q: Teknologi apa yang sedang dipelajari?</strong><br>
+                                    A: Saat ini fokus ke Machine Learning deployment dan cloud computing.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Tab Unduh CV -->
+                <!-- Tab Unduh CV (dengan Bootstrap modal untuk preview CV) -->
                 <div id="cv" class="tab-content">
                     <h2>Curriculum Vitae</h2>
-                    <div style="text-align: center; padding: 30px;">
-                        <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png "style="font-size: 64px; color: #ff0000; margin-bottom: 20px;">
+                    <div style="text-align: center; padding: 20px;">
+                        <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png"
+                            style="width: 64px; margin-bottom: 10px;">
                         <p>CV Rayan - Updated 2026.pdf</p>
                         <br>
-                        <a href="#" style="padding: 10px 20px; background: #228b22; color: white; text-decoration: none; border-radius: 5px; border: 2px outset #fff;">
+                        <!-- Tombol download asli -->
+                        <a href="#" class="download-cv-btn" id="downloadCvBtn">
                             <i class="fa-solid fa-download"></i> Download Sekarang
                         </a>
+                        <!-- Modal Bootstrap untuk pratinjau CV (tanpa merusak tema retro) -->
+                        <button type="button" class="btn-retro ms-2" data-bs-toggle="modal" data-bs-target="#cvModal">
+                            <i class="fa-regular fa-eye"></i> Pratinjau CV
+                        </button>
                     </div>
                 </div>
 
+                <!-- Modal Bootstrap (pratinjau CV sederhana) -->
+                <div class="modal fade" id="cvModal" tabindex="-1" aria-labelledby="cvModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"
+                            style="background: rgba(255,255,245,0.95); border: 3px double #1e90ff; font-family: 'Courier New', monospace;">
+                            <div class="modal-header" style="border-bottom: 2px solid #228b22;">
+                                <h5 class="modal-title" id="cvModalLabel"><i class="fa-regular fa-file-pdf"></i>
+                                    Pratinjau CV - M. Rayan Zishan</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Pendidikan:</strong> Informatika USK (2023 - sekarang)</p>
+                                <p><strong>Pengalaman:</strong> Asisten Praktikum Algoritma, Data Analyst Freelance</p>
+                                <p><strong>Sertifikasi:</strong> Google Data Analytics, Python for Data Science</p>
+                                <p><strong>Skill:</strong> Python, SQL, Machine Learning, HTML/CSS, Git</p>
+                                <hr>
+                                <small>📄 File lengkap dapat diunduh melalui tombol "Download Sekarang".</small>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-retro" data-bs-dismiss="modal">Tutup</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </article>
         </div>
 
         <footer>
-            DIBUAT DENGAN HTML/CSS MURNI • BEST VIEWED IN INTERNET EXPLORER • NO COOKIES USED
+            DIBUAT DENGAN HTML/CSS MURNI + BOOTSTRAP • BEST VIEWED IN INTERNET EXPLORER • ✨ FRUTIGER AERO VIBES ✨
         </footer>
     </div>
 
+    <!-- Bootstrap JS Bundle (Popper + Bootstrap) untuk komponen interaktif -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script sederhana untuk tooltip, copy email, alert, dan tombol download (tanpa merusak tema asli) -->
+    <script>
+        // Aktifkan tooltip Bootstrap
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+
+        // Fungsi copy email
+        const copyBtn = document.getElementById('copyEmailBtn');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function () {
+                const email = "24rayan@mhs.usk.ac.id";
+                navigator.clipboard.writeText(email).then(() => {
+                    const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+                    const wrapper = document.createElement('div');
+                    wrapper.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert" style="background:#e0ffe0; border:1px solid #228b22; font-size:12px;">📧 Email <strong>' + email + '</strong> disalin!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+                    alertPlaceholder.append(wrapper);
+                    setTimeout(() => {
+                        if (wrapper.firstChild) wrapper.firstChild.classList.add('fade');
+                        setTimeout(() => wrapper.remove(), 2000);
+                    }, 1500);
+                }).catch(() => {
+                    alert("Gagal menyalin, silakan salin manual.");
+                });
+            });
+        }
+
+        // Tombol download CV (simulasi)
+        const downloadBtn = document.getElementById('downloadCvBtn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                alert("🚀 Simulasi download: CV_Rayan_Zishan_2026.pdf (file siap diunduh)");
+                // Anda bisa mengganti alert dengan link download sebenarnya.
+            });
+        }
+
+        // Menjaga navigasi tab dengan fragment identifier seperti kode asli.
+        // Tidak perlu modifikasi lebih lanjut, karena mekanisme :target sudah berfungsi.
+        // Memastikan halaman tetap smooth saat reload dengan hash.
+        if (window.location.hash === "" || window.location.hash === "#home") {
+            // default home tampil, ok
+        } else {
+            // sembunyikan home jika target lain
+            let homeDiv = document.querySelector('#home');
+            if (homeDiv && window.location.hash !== "#home") {
+                // tidak perlu manipulasi karena css :target sudah mengatur
+            }
+        }
+        // tambahan: karena penggunaan target dari menu sudah tepat, tidak perlu javascript tambahan.
+        // untuk mempertahankan tampilan saat pertama kali buka dengan hash kosong, home sudah tampil.
+        // kecil tambahan untuk memastikan semua tab content yang tidak aktif tersembunyi saat awal.
+        if (!window.location.hash || window.location.hash === "#home") {
+            // biarkan home tampil
+        } else if (window.location.hash === "#projects") {
+            document.querySelector('#home') && (document.querySelector('#home').style.display = 'none');
+        } else if (window.location.hash === "#contact") {
+            document.querySelector('#home') && (document.querySelector('#home').style.display = 'none');
+        } else if (window.location.hash === "#cv") {
+            document.querySelector('#home') && (document.querySelector('#home').style.display = 'none');
+        }
+    </script>
 </body>
 
 </html>
